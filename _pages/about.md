@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: PhD student, Nuclear, Plasma, and Radiological Engineering, <a href='https://illinois.edu/'>University of Illinois Urbana-Champaign</a>
+subtitle: PhD student, <a href='https://illinois.edu/'>University of Illinois Urbana-Champaign</a>
 
 profile:
   align: right
