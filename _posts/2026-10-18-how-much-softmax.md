@@ -6,6 +6,7 @@ description: What a pretrained LLM needs from softmax, a calibration-free FlashA
 tags: softmax attention llm efficiency
 categories: research
 redirect: /softmax/
+sitemap: false
 read_time: 23
 og_image: /assets/img/softmax-og.png
 ---
