@@ -2,22 +2,20 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: PhD student, Nuclear, Plasma, and Radiological Engineering, <a href='https://illinois.edu/'>University of Illinois Urbana-Champaign</a>
 
 profile:
   align: right
-  image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image: prof_pic.png
+  image_circular: true # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>szhu48 [at] illinois [dot] edu</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
 announcements:
-  enabled: true # includes a list of news items
+  enabled: false # includes a list of news items
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
   limit: 5 # leave blank to include all the news in the `_news` folder
 
@@ -27,8 +25,10 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a PhD student at the University of Illinois Urbana-Champaign, advised by [Prof. Tomasz Kozlowski](https://arts.npre.illinois.edu/).
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+My current research asks how much numerical precision softmax attention actually needs. I study which parts of softmax a pretrained LLM depends on, how to turn that into faster attention kernels (for example, a calibration-free variant inside FlashAttention-4), and what changes when a transformer is pretrained with a coarse, quantized softmax from the start. I am broadly interested in LLM efficiency, GPU kernels, and AI infrastructure.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Before moving to machine learning, I worked on PDE-based inverse problems, Monte Carlo radiation transport (FLUKA, MCNP, Serpent), and 3D radiation-field reconstruction from sparse measurements. I received my master's degree from Tsinghua University and my bachelor's degree from Southeast University.
+
+A short explainer of my recent work: [How Much Softmax Do You Need in LLMs?](/softmax/)
