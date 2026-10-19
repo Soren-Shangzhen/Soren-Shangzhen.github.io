@@ -8,3 +8,5 @@ _posts/2015-10-20-math.md
 _data/citations.yml
 # Self-contained explainer page (inlined D3/MathJax/fonts); published as-is
 softmax/index.html
+# Shadows al_folio_core main.scss; contains Liquid inside Sass
+assets/css/main.scss
