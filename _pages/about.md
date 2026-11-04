@@ -34,6 +34,7 @@ Before moving to machine learning, I worked on PDE-based inverse problems, Monte
 A short explainer of my recent work: [How Much Softmax Do You Need in LLMs?](/softmax/)
 
 <div style="clear: both;">
+  <h2>Recent Videos</h2>
   <iframe
     src="https://www.youtube.com/embed/9vOJEx41qkk"
     title="How Much Softmax Do LLMs Need?"
