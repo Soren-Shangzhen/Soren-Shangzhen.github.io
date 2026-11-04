@@ -8,3 +8,8 @@ Built with [al-folio](https://github.com/alshedivat/al-folio) (Jekyll) and deplo
 - `_bibliography/papers.bib`: publications
 - `_posts/`: blog index entries
 - `softmax/index.html`: the self-contained "How Much Softmax Do You Need in LLMs?" explainer, served at `/softmax/`
+
+Local overrides of al_folio_core 1.0.15 files (re-check these when upgrading the gem):
+
+- `assets/css/main.scss`: cobalt accent color, contact line font
+- `_layouts/about.liquid`: title-case home page section headings
