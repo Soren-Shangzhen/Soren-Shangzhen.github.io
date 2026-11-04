@@ -32,3 +32,14 @@ My current research asks how much numerical precision softmax attention actually
 Before moving to machine learning, I worked on PDE-based inverse problems, Monte Carlo radiation transport (FLUKA, MCNP, Serpent), and 3D radiation-field reconstruction from sparse measurements. I received my master's degree from Tsinghua University and my bachelor's degree from Southeast University.
 
 A short explainer of my recent work: [How Much Softmax Do You Need in LLMs?](/softmax/)
+
+<div style="clear: both;">
+  <iframe
+    src="https://www.youtube.com/embed/9vOJEx41qkk"
+    title="How Much Softmax Do LLMs Need?"
+    style="width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px;"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+</div>

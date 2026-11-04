@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Video: How Much Softmax Do LLMs Need?"
-date: 2026-11-04
+date: 2026-10-15
 description: A short video explainer of my two softmax papers, covering what pretrained LLMs need from softmax and what changes when you train with a coarse one.
 tags: softmax attention llm video
 categories: research
