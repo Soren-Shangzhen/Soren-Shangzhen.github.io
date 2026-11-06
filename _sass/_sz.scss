@@ -45,11 +45,11 @@
 }
 
 @font-face {
-  font-family: "Instrument Serif";
+  font-family: "Inter Tight";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 900;
   font-display: swap;
-  src: url("/assets/fonts/instrument-serif-latin-400-normal.woff2") format("woff2");
+  src: url("/assets/fonts/inter-tight-latin-wght-normal.woff2") format("woff2");
 }
 
 // -----------------------------------------------------------------------------
@@ -77,7 +77,7 @@
   --sz-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --sz-display: "Space Grotesk", "Inter", system-ui, sans-serif;
   --sz-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --sz-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --sz-headline: "Inter Tight", "Inter", system-ui, sans-serif;
 
   --sz-page: #fafbfd;
   --sz-surface: #ffffff;
@@ -164,14 +164,14 @@ b {
   font-weight: 600;
 }
 
-// Large display headings use the serif; smaller headings and UI stay in Space Grotesk.
+// Large display headings use Inter Tight at a medium weight; smaller headings and UI stay in Space Grotesk.
 .sz-hero-title,
 .sz-h2,
 .header-bar h1,
 .post-header .post-title {
-  font-family: var(--sz-serif);
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-family: var(--sz-headline);
+  font-weight: 500;
+  letter-spacing: -0.035em;
 }
 
 // -----------------------------------------------------------------------------
@@ -904,21 +904,21 @@ footer {
   }
 }
 
-// Serif display sizes (Instrument Serif sets smaller than the sans at the same size).
+// Display heading sizes for Inter Tight.
 .sz-hero-title {
-  font-size: clamp(3.1rem, 7vw, 4.9rem);
-  line-height: 1;
+  font-size: clamp(2.9rem, 6.6vw, 4.5rem);
+  line-height: 1.02;
 }
 
 .sz-h2 {
-  font-size: clamp(2.2rem, 4.2vw, 2.9rem);
+  font-size: clamp(2rem, 3.8vw, 2.6rem);
 }
 
 .header-bar h1 {
-  font-size: clamp(2.8rem, 6vw, 3.75rem);
+  font-size: clamp(2.6rem, 5.4vw, 3.4rem);
 }
 
 .post-header .post-title {
-  font-size: clamp(2.4rem, 5vw, 3.4rem);
-  line-height: 1.05;
+  font-size: clamp(2.2rem, 4.6vw, 3.1rem);
+  line-height: 1.08;
 }
