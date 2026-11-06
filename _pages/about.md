@@ -9,7 +9,7 @@ hero:
   eyebrow: PhD student · University of Illinois Urbana-Champaign
   lead: >-
     I study <strong>how much numerical precision softmax attention in LLMs actually needs</strong>, and what that means for faster
-    attention kernels and for pretraining.
+    attention kernels and for pretraining on B200.
   buttons:
     - label: Read the explainer →
       url: /softmax/
@@ -26,7 +26,7 @@ hero:
 # Profile panel next to the hero
 profile:
   image: prof_pic.png
-  role: PhD student, UIUC
+  role: PhD student<br>University of Illinois Urbana-Champaign
   facts:
     - label: Advisor
       value: <a href="https://arts.npre.illinois.edu/">Prof. Tomasz Kozlowski</a>
