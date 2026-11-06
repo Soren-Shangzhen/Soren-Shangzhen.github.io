@@ -11,5 +11,8 @@ Built with [al-folio](https://github.com/alshedivat/al-folio) (Jekyll) and deplo
 
 Local overrides of al_folio_core 1.0.15 files (re-check these when upgrading the gem):
 
-- `assets/css/main.scss`: cobalt accent color, contact line font
-- `_layouts/about.liquid`: title-case home page section headings
+- `assets/css/main.scss`: accent colors, and loads the site design system
+- `_layouts/about.liquid`: custom home page (hero, profile panel, numbered sections); its text lives in `_pages/about.md`
+
+Site design system: `_sass/_sz.scss` (palette, typography, components). Fonts are self-hosted in `assets/fonts/`
+(Inter, Inter Tight, Space Grotesk, IBM Plex Mono; SIL OFL 1.1, licenses alongside).
