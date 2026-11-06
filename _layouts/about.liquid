@@ -3,86 +3,199 @@ layout: default
 ---
 {% comment %}
   Site override of al_folio_core 1.0.15 _layouts/about.liquid.
-  Only change: home page section headings are title case ("Latest Posts", "Selected Publications").
+  Home page in the site's "blueprint" style: a hero with a profile panel, then numbered sections.
+  Text lives in _pages/about.md (front matter: hero, profile, focus, videos; body: the About text).
 {% endcomment %}
-<div class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
+<div class="sz-home">
+  <section class="sz-hero">
+    <div class="sz-hero-main">
+      {% if page.hero.eyebrow %}
+        <p class="sz-label">{{ page.hero.eyebrow }}</p>
       {% endif %}
-    </h1>
-    <p class="desc">{{ page.subtitle }}</p>
-  </header>
+      <h1 class="sz-hero-title">
+        {{ site.first_name }}
+        <span class="sz-accent">{{ site.last_name }}</span>
+      </h1>
+      {% if page.hero.lead %}
+        <p class="sz-hero-lead">{{ page.hero.lead }}</p>
+      {% endif %}
+      {% if page.hero.buttons %}
+        <div class="sz-actions">
+          {% for b in page.hero.buttons %}
+            <a
+              class="sz-btn{% if forloop.first %} sz-btn-primary{% endif %}"
+              href="{% if b.url contains '://' or b.url contains '#' %}{{ b.url }}{% else %}{{ b.url | relative_url }}{% endif %}"
+            >
+              {{- b.label -}}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% if page.hero.chips %}
+        <ul class="sz-chips">
+          {% for c in page.hero.chips %}
+            <li>{{ c }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
 
-  <article>
     {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
+      <aside class="sz-panel" aria-label="Profile">
+        <div class="sz-panel-head">
+          <span>Profile</span>
+          <span>{{ site.url | remove: 'https://' | remove: 'http://' }}</span>
+        </div>
+        <div class="sz-panel-id">
+          {% if page.profile.image %}
+            <img
+              class="sz-avatar"
+              src="{{ 'assets/img/' | append: page.profile.image | relative_url }}"
+              alt="{{ site.first_name }} {{ site.last_name }}"
+              width="88"
+              height="88"
+            >
           {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
+          <div>
+            <div class="sz-panel-name">
+              {{ site.first_name }}
+              {{ site.last_name }}
+            </div>
+            {% if page.profile.role %}
+              <div class="sz-panel-role">{{ page.profile.role }}</div>
+            {% endif %}
+          </div>
+        </div>
+        {% if page.profile.facts %}
+          <dl class="sz-facts">
+            {% for f in page.profile.facts %}
+              <div class="sz-fact">
+                <dt>{{ f.label }}</dt>
+                <dd>{{ f.value }}</dd>
+              </div>
+            {% endfor %}
+          </dl>
         {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
-      </div>
+        <div class="sz-panel-foot">Updated {{ site.time | date: '%b %Y' }}</div>
+      </aside>
     {% endif %}
+  </section>
 
-    <div class="clearfix">{{ content }}</div>
+  {% assign sec = 0 %}
 
-    <!-- News -->
-    {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+  <section class="sz-section" id="about">
+    {% assign sec = sec | plus: 1 %}
+    <p class="sz-label sz-rule">
+      Sec. {% if sec < 10 %}0{% endif -%}
+      {{- sec }} — About
+    </p>
+    <div class="sz-split">
+      <div class="sz-prose">{{ content }}</div>
+      {% if page.focus %}
+        <div class="sz-grid">
+          {% for f in page.focus %}
+            <div class="sz-cell">
+              <h3>{{ f.title }}</h3>
+              <p>{{ f.text }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  {% if page.videos %}
+    <section class="sz-section sz-band" id="recent-videos">
+      {% assign sec = sec | plus: 1 %}
+      <p class="sz-label sz-rule">
+        Sec. {% if sec < 10 %}0{% endif -%}
+        {{- sec }} — Video
+      </p>
+      <h2 class="sz-h2">Recent <span class="sz-accent">Videos</span></h2>
+      {% for v in page.videos %}
+        <figure class="sz-figure">
+          <figcaption class="sz-figcap">
+            <span
+              >Fig. {% if sec < 10 %}0{% endif -%}
+              {{- sec }}-{{ forloop.index }} — {{ v.title -}}
+            </span>
+            <span>
+              {{- v.date | date: '%b %d, %Y' -}}
+              {%- if v.post %}
+                · <a href="{{ v.post | relative_url }}">Notes →</a>
+              {%- endif -%}
+            </span>
+          </figcaption>
+          <div class="sz-video">
+            <iframe
+              src="https://www.youtube.com/embed/{{ v.id }}"
+              title="{{ v.title | escape }}"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </figure>
+      {% endfor %}
+    </section>
+  {% endif %}
+
+  {% if page.latest_posts and page.latest_posts.enabled %}
+    <section class="sz-section" id="latest-posts">
+      {% assign sec = sec | plus: 1 %}
+      <p class="sz-label sz-rule">
+        Sec. {% if sec < 10 %}0{% endif -%}
+        {{- sec }} — Writing
+      </p>
+      <h2 class="sz-h2">
+        <a href="{{ '/blog/' | relative_url }}">Latest <span class="sz-accent">Posts</span></a>
       </h2>
-      {% include news.liquid limit=true %}
-    {% endif %}
+      <ul class="sz-rows">
+        {% assign post_limit = page.latest_posts.limit | default: 3 %}
+        {% for item in site.posts limit: post_limit %}
+          {% if item.redirect == blank %}
+            {% assign item_url = item.url | relative_url %}
+          {% elsif item.redirect contains '://' %}
+            {% assign item_url = item.redirect %}
+          {% else %}
+            {% assign item_url = item.redirect | relative_url %}
+          {% endif %}
+          <li>
+            <span class="sz-row-date">{{ item.date | date: '%b %d, %Y' }}</span>
+            <a class="sz-row-main" href="{{ item_url }}">
+              <span class="sz-row-title">{{ item.title }}</span>
+              {% if item.description -%}
+                <span class="sz-row-desc">{{ item.description }}</span>
+              {%- endif %}
+            </a>
+            <span class="sz-row-arrow" aria-hidden="true">→</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
 
-    <!-- Latest posts -->
-    {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest Posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
-    {% endif %}
-
-    <!-- Selected papers -->
-    {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
+  {% if page.selected_papers %}
+    <section class="sz-section sz-band" id="selected-publications">
+      {% assign sec = sec | plus: 1 %}
+      <p class="sz-label sz-rule">
+        Sec. {% if sec < 10 %}0{% endif -%}
+        {{- sec }} — Research
+      </p>
+      <h2 class="sz-h2">
+        <a href="{{ '/publications/' | relative_url }}">Selected <span class="sz-accent">Publications</span></a>
       </h2>
       {% include selected_papers.liquid %}
-    {% endif %}
+    </section>
+  {% endif %}
 
-    <!-- Social -->
-    {% if page.social %}
+  {% if page.social %}
+    <section class="sz-section sz-contact">
       <div class="social">
         <div class="contact-icons">{% social_links %}</div>
-
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
-    {% endif %}
-
-    {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
-      {% if site.plugins contains 'al_newsletter' %}
-        {% include plugins/al_newsletter_form_center_margin.liquid %}
-      {% else %}
-        {% include newsletter.liquid center=true %}
-      {% endif %}
-    {% endif %}
-  </article>
+    </section>
+  {% endif %}
 </div>

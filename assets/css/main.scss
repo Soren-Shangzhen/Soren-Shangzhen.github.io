@@ -11,10 +11,10 @@
    Make sure `_sass/_variables.scss` declares `$max-content-width: 72rem !default;` */
 @use "variables" with (
   $max-content-width: {{ site.max_width | default:  "930px" }},
-  // Site palette: cobalt in light mode, light cobalt in dark mode (matches /softmax/).
-  // al-folio derives --global-theme-color from $purple-color (light) and $cyan-color (dark).
-  $purple-color: #2f5da8,
-  $cyan-color: #8fb2ec
+  // Site accent (light / dark). al-folio derives its theme color from these;
+  // the full palette is set in _sass/_sz.scss.
+  $purple-color: #1d4ed8,
+  $cyan-color: #7aa2ff
 );
 
 /* Your project partials — convert these files to `@use "variables";`
@@ -36,16 +36,5 @@
 @use "teachings";
 @use "typograms";
 
-// -----------------------------------------------------------------------------
-// Site overrides (this file shadows al_folio_core's assets/css/main.scss)
-// -----------------------------------------------------------------------------
-
-// Dark text on the light-blue accent in dark mode keeps buttons and dropdowns readable.
-html[data-theme="dark"] {
-  --global-hover-text-color: #1c1c1d;
-}
-
-// Show the contact line under the profile picture in the body font, not monospace.
-.profile .more-info {
-  font-family: inherit;
-}
+// Site design system (fonts, palette, home page). Must stay the last @use.
+@use "sz";
