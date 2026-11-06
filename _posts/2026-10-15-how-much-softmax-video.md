@@ -7,14 +7,15 @@ tags: softmax attention llm video
 categories: research
 ---
 
-<iframe
-  src="https://www.youtube.com/embed/9vOJEx41qkk"
-  title="How Much Softmax Do LLMs Need?"
-  style="width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px;"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  referrerpolicy="strict-origin-when-cross-origin"
-  allowfullscreen
-></iframe>
+<div class="sz-video">
+  <iframe
+    src="https://www.youtube.com/embed/9vOJEx41qkk"
+    title="How Much Softmax Do LLMs Need?"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+</div>
 
 <p><a href="https://youtu.be/9vOJEx41qkk">Watch on YouTube</a></p>
 
